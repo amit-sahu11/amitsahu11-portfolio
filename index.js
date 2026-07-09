@@ -23,7 +23,7 @@ function openPdfModal(pdfSrc) {
     }
     document.getElementById('pdfModal').classList.add('active');
     document.getElementById('pdfIframe').src = pdfSrc;
-    document.getElementById('downloadPdfBtn').href = pdfSrc;
+    document.getElementById('downloadPdfBtn').href = 'Profile.pdf';
 }
 
 function closePdfModal() {

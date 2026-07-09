@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amit Kumar Sahu - Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --text-color: #000000;
+      --text-muted: #374151;
+      --line-color: #e5e7eb; /* FlowCV uses thin dividers */
+      --line-color-dark: #000000;
+      --font-family: 'Inter', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: var(--font-family);
+    }
+
+    body {
+      background-color: #f1f5f9;
+      color: var(--text-color);
+      line-height: 1.4;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Print action bar (hidden during print) */
+    .action-bar {
+      background: #1e293b;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      border-radius: 8px 8px 0 0;
+      width: 100%;
+      max-width: 820px;
+      border: 1px solid #334155;
+    }
+
+    .action-bar p {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    .btn-print {
+      background: #ef4444; /* FlowCV Red Theme accent */
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+    }
+
+    .btn-print:hover {
+      background: #dc2626;
+    }
+
+    /* Resume Page Container (Mimicking FlowCV layout) */
+    .resume-page {
+      background: #ffffff;
+      width: 100%;
+      max-width: 820px;
+      padding: 45px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      border-radius: 0 0 8px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* Header Styling */
+    .resume-header {
+      margin-bottom: 4px;
+    }
+
+    .resume-header h1 {
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: #dc2626; /* Red color for name as per new template theme */
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      font-size: 0.85rem;
+      color: var(--text-color);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .contact-item i {
+      color: var(--text-color);
+      font-size: 0.9rem;
+    }
+
+    .contact-item a {
+      color: var(--text-color);
+      text-decoration: none;
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
+    /* Section Styling */
+    .resume-section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #dc2626; /* Red header to match the new PDF */
+      padding-bottom: 4px;
+      border-bottom: 1.5px solid #dc2626;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title i {
+      font-size: 1rem;
+    }
+
+    .section-content {
+      font-size: 0.88rem;
+      color: var(--text-color);
+      line-height: 1.45;
+    }
+
+    /* Profile / Summary text */
+    .profile-text {
+      text-align: justify;
+    }
+
+    /* Education Item */
+    .edu-item {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 12px;
+    }
+
+    .edu-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 3px;
+    }
+
+    .item-title-block {
+      font-weight: 700;
+      color: var(--text-color);
+    }
+
+    .item-institution {
+      font-weight: 500;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .item-date {
+      color: var(--text-color);
+      font-weight: 500;
+      font-size: 0.88rem;
+      white-space: nowrap;
+    }
+
+    .item-details {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Skills styling - plain list as per updated template */
+    .skills-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .skills-row {
+      line-height: 1.4;
+    }
+
+    .skills-label {
+      font-weight: 700;
+      color: var(--text-color);
+    }
+
+    /* Languages row */
+    .languages-list {
+      list-style-type: disc;
+      padding-left: 18px;
+      display: flex;
+      gap: 40px;
+    }
+
+    /* Certificates 3-Column Layout */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 15px 25px;
+    }
+
+    .cert-item-block {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cert-title-row {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2px;
+    }
+
+    .cert-title {
+      font-weight: 700;
+      color: var(--text-color);
+    }
+
+    .cert-org {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .cert-date {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    /* Trainings section */
+    .training-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .training-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .training-name {
+      font-weight: 700;
+      color: var(--text-color);
+    }
+
+    .training-org {
+      font-weight: 500;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .training-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Print Media Queries */
+    @media print {
+      body {
+        background-color: #ffffff;
+        padding: 0;
+        display: block;
+      }
+
+      .action-bar {
+        display: none;
+      }
+
+      .resume-page {
+        box-shadow: none;
+        border-radius: 0;
+        max-width: 100%;
+        padding: 0;
+      }
+
+      @page {
+        size: A4;
+        margin: 1.4cm 1.5cm 1.4cm 1.5cm;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Instruction / Action bar (hidden in print) -->
+  <div class="action-bar">
+    <p><i class="fas fa-download"></i> Click the button to download the official PDF version of this resume.</p>
+    <a href="Profile.pdf" download="Profile.pdf" class="btn-print" style="text-decoration: none;">
+      <i class="fas fa-file-pdf"></i> Download PDF Resume
+    </a>
+  </div>
+
+  <!-- Resume Container -->
+  <div class="resume-page">
+    
+    <!-- Header -->
+    <div class="resume-header">
+      <h1>Amit Kumar Sahu</h1>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:sahuamitsahu87@gmail.com">sahuamitsahu87@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-phone-alt"></i>
+          <span>6266890445</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Sharda Nagar, Jabalpur</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-calendar-alt"></i>
+          <span>2005-06-11</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-globe"></i>
+          <a href="https://amitsahu11-portfolio.netlify.app/" target="_blank">Portfolio</a>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-linkedin"></i>
+          <a href="https://linkedin.com/in/amitsahu11" target="_blank">linkedin.com/in/amitsahu11</a>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-github"></i>
+          <a href="https://github.com/amit-sahu11" target="_blank">github.com/amit-sahu11</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile -->
+    <div class="resume-section">
+      <h2 class="section-title"><i class="fas fa-user"></i> Profile</h2>
+      <div class="section-content profile-text">
+        Data Science student skilled in Python, SQL, C++, Data Structures & Algorithms (DSA), Machine Learning fundamentals, and Power BI, with knowledge of web technologies including HTML, CSS, and JavaScript. Passionate about analyzing data, solving complex problems, and building impactful real-world projects. Seeking an internship opportunity to enhance my technical expertise, gain industry experience, and contribute effectively to innovative and data-driven solutions.
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="resume-section">
+      <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+      <div class="section-content">
+        <div class="education-list">
+          
+          <!-- BTech -->
+          <div class="edu-item">
+            <div class="item-header">
+              <span class="item-title-block">
+                Baderia Global Institute of Engineering & Management, <span class="item-institution">BTech CSE (Data Science)</span>
+              </span>
+              <span class="item-date">2023 – 2027</span>
+            </div>
+            <div class="item-details">CGPA - 7.3 <span style="margin-left: 15px; color: #6b7280;">Jabalpur</span></div>
+          </div>
+
+          <!-- 12th -->
+          <div class="edu-item">
+            <div class="item-header">
+              <span class="item-title-block">
+                Central Academy Senior Secondary School (CBSE), <span class="item-institution">12th PCM</span>
+              </span>
+              <span class="item-date">2022 – 2023</span>
+            </div>
+            <div class="item-details">73.0% <span style="margin-left: 15px; color: #6b7280;">Jabalpur</span></div>
+          </div>
+
+          <!-- 10th -->
+          <div class="edu-item">
+            <div class="item-header">
+              <span class="item-title-block">
+                Central Academy Senior Secondary School (CBSE), <span class="item-institution">10th</span>
+              </span>
+              <span class="item-date">2020 – 2021</span>
+            </div>
+            <div class="item-details">73.0% <span style="margin-left: 15px; color: #6b7280;">Jabalpur</span></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="resume-section">
+      <h2 class="section-title"><i class="fas fa-tools"></i> Skills</h2>
+      <div class="section-content">
+        <div class="skills-list">
+          <div class="skills-row">
+            <span class="skills-label">Technical Skills:</span> Python, C++, SQL, MySQL, Power BI, Tableau, Excel, Pandas, NumPy, HTML, CSS, JavaScript
+          </div>
+          <div class="skills-row">
+            <span class="skills-label">Soft Skills:</span> Problem Solving, Teamwork, Time Management, Adaptability
+          </div>
+          <div class="skills-row">
+            <span class="skills-label">Tools:</span> Jupyter Notebook, VS Code, Git, GitHub
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Languages -->
+    <div class="resume-section">
+      <h2 class="section-title"><i class="fas fa-language"></i> Languages</h2>
+      <div class="section-content">
+        <ul class="languages-list">
+          <li>English</li>
+          <li>Hindi</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Certificates -->
+    <div class="resume-section">
+      <h2 class="section-title"><i class="fas fa-award"></i> Certificates</h2>
+      <div class="section-content">
+        <div class="certs-grid">
+          
+          <!-- Cert 1 -->
+          <div class="cert-item-block">
+            <div class="cert-title-row">
+              <span class="cert-title">SIH 2024 (Internal) – Developer</span>
+              <span class="cert-date">(2024-09-05)</span>
+            </div>
+            <span class="cert-org">Developer in Team Techno Coders at BGIM Jabalpur</span>
+          </div>
+
+          <!-- Cert 2 -->
+          <div class="cert-item-block">
+            <div class="cert-title-row">
+              <span class="cert-title">SIH 2025 (Internal) – Developer & Volunteer</span>
+              <span class="cert-date">(2025-09-12)</span>
+            </div>
+            <span class="cert-org">Developer + Volunteer at internal SIH 2025, BGIM Jabalpur</span>
+          </div>
+
+          <!-- Cert 3 -->
+          <div class="cert-item-block">
+            <div class="cert-title-row">
+              <span class="cert-title">Python Essentials 1 & 2</span>
+              <span class="cert-date"></span>
+            </div>
+            <span class="cert-org">Completed Python Essentials under Cisco Networking Academy</span>
+          </div>
+
+          <!-- Cert 4 -->
+          <div class="cert-item-block">
+            <div class="cert-title-row">
+              <span class="cert-title">SQL Database Certificate</span>
+              <span class="cert-date"></span>
+            </div>
+            <span class="cert-org">Certified in SQL queries, joins, and database design</span>
+          </div>
+
+          <!-- Cert 5 -->
+          <div class="cert-item-block">
+            <div class="cert-title-row">
+              <span class="cert-title">HCL Certificate</span>
+              <span class="cert-date"></span>
+            </div>
+            <span class="cert-org">Certified in IT and hardware foundations by HCL</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Trainings -->
+    <div class="resume-section">
+      <h2 class="section-title"><i class="fas fa-chalkboard-teacher"></i> Trainings</h2>
+      <div class="section-content">
+        <div class="training-list">
+          
+          <!-- Training 1 -->
+          <div class="training-item">
+            <div>
+              <span class="training-name">Advance AI/ML Training – Telecom Data Analytics (1 Week)</span>,
+              <span class="training-org">Nokia Solutions and Networks India Pvt. Ltd. (TSSC)</span>
+            </div>
+            <span class="item-date">03/2026</span>
+          </div>
+
+          <!-- Training 2 -->
+          <div class="training-item">
+            <div>
+              <span class="training-name">EduSkills Tech Camp – Google AI-ML</span>,
+              <span class="training-org">EduSkills</span>
+              <div class="training-desc">3-day Google AI-ML Tech Camp.</div>
+            </div>
+            <span class="item-date">11/2024</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

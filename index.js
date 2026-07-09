@@ -16,14 +16,18 @@ document.addEventListener('keydown', function (event) {
 });
 
 function openPdfModal(pdfSrc) {
+    // Add cache buster to bypass aggressive browser caching (especially on mobile)
+    const cacheBuster = '?v=' + new Date().getTime();
+    const freshPdfSrc = pdfSrc.split('?')[0] + cacheBuster;
+
     // Check if device is mobile or small screen
     if (window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        window.open(pdfSrc, '_blank');
+        window.open(freshPdfSrc, '_blank');
         return;
     }
     document.getElementById('pdfModal').classList.add('active');
-    document.getElementById('pdfIframe').src = pdfSrc;
-    document.getElementById('downloadPdfBtn').href = 'Profile.pdf';
+    document.getElementById('pdfIframe').src = freshPdfSrc;
+    document.getElementById('downloadPdfBtn').href = freshPdfSrc;
 }
 
 function closePdfModal() {
